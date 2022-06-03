@@ -1,0 +1,24 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/login.css"> 
+{% endblock %}
+
+{% block content %}
+<div class="wrapper fadeInDown">
+    <div id="formContent" class="formContent">
+        <div class="fadeIn first">
+            <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120" alt="">
+        </div>
+        <form action="" method="post">
+            <label for="username"></label>
+            <input type="text" id="login" class="fadeIn second" name="username" placeholder="login" id="username">
+            <label for="password"></label>
+            <input type="password" id="password" class="fadeIn third" name="password" placeholder="password" id="password">
+            <label for="submit"></label>
+            <input type="submit" class="fadeIn fourth" value="Log In" id="submit">
+        </form>
+        <span class="error">{{ erreur }}</br></span>
+        <a href="/user/register">Créez un compte</a>
+    </div>
+</div>
+{% endblock %}

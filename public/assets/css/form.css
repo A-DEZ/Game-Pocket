@@ -1,0 +1,23 @@
+.container{
+    margin-top:60px;
+} 
+
+.formcontainer{
+    margin-left:20%;
+    margin-right:20%;
+}
+
+.champsSpace, .champsSelect{
+    margin-bottom: 1rem !important;
+}
+
+
+.mx-auto.w-50.p-3{
+    margin-top: 65px; 
+    
+}
+
+.require {
+    color: red;
+}
+

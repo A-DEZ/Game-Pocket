@@ -1,0 +1,55 @@
+    {% extends 'layout.html.twig' %}
+    {% block title %}
+    Formulaire de contact
+    {% endblock %}
+
+    {% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/form.css">
+    {% endblock %}      
+
+
+    {% block content %}
+    <main class="container">
+
+        <form class="formcontainer" action ="" method="post">
+    <h1 class="Title mb-1 mb-md-3 mb-lg-5">Nous contacter</h1>    
+
+    <label for="identity" class="form-label mt-2 mt-md-3 mt-lg-5" >Vous êtes : <span class="require">*</span></label></br>
+    <select id="identity" class="champsSelect form-select shadow-sm" name="identity" required> 
+        <option value="identity_1">Utilisateur</option>
+        <option value="identity_2">Développeur</option>       
+    </select>
+
+    <div>
+        <label for="name" class="form-label mt-1 mt-md-3 mt-lg-5">Nom :<span class="require">*</span></label>
+        <input id="name" class="champsSpace form-control shadow-sm" placeholder="Luigi Lébontuillo" type="text" pattern="^[a-zA-Z-' ]*$" name="gameName"  rows="5" required></input>
+    </div>
+
+    <div>
+        <label for="mail" class="form-label mt-1 mt-md-3 mt-lg-5" >Mail :<span class="require">*</span></label>
+        <input id="mail" class="champsSpace form-control shadow-sm" placeholder="luigi@game.pocket.com" type="mail"  name="mail" rows="5" required></input>
+    </div>
+    <div>
+        <label for="subject" class="form-label mt-2 mt-md-3 mt-lg-5" >Sujet :<span class="require">*</span></label></br>
+        <select id="subject" class="champsSelect form-select shadow-sm" name="subject" required>
+            <option value="subject_1">Demande d'informations</option>
+            <option value="subject_2">Réclamations</option>
+            <option value="subject_3">Besoin de SAV</option>
+            <option value="subject_4">Autres demandes/remarques</option>
+        </select>
+        </div>
+    
+     <div>
+        <label class="form-label mt-2 mt-md-3 mt-lg-5" for="message">Message : <span class="require">*</span></label>
+        <textarea class="champsSpace form-control shadow-sm pb-5" placeholder="C'est vraiment un site qui déchire!" name="message" required></textarea>
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary mt-2 mt-md-3 mt-lg-5 shadow-sm" name="submit" id="envoyer">Envoyer</button>
+    </div>
+    
+    </form>
+
+</main>
+{% endblock %}
+

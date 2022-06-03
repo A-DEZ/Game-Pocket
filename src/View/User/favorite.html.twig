@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/favorite.css">
+{% endblock %}
+{% block content %}
+<section class="user-favorite">
+	{% if favorites is empty %}
+	<img src="https://i.imgflip.com/5ui573.jpg" title="made at imgflip.com" class="no-favorites d-block">
+	{% else %}
+	<h2 class="favorite px-3 h4 mt-70">Mes Favoris</h2>
+	<section class="favorite-section d-flex flex-wrap justify-content-center">
+		{% for favorite in favorites %}
+			<div class="card d-block mx-3 position-relative" style="width: 18rem;">
+				<a class="delete-favorite position-absolute" href="/games/favorite/delete?id={{favorite.id}}"><ion-icon name="close-outline" style="zoom:1.5;" ></ion-icon></a>
+				<img class="card-img-top mt-4" src="/assets/images/{{favorite.image}}" alt="Card image cap">
+				<div class="card-body">
+					<div class="cardtext">
+						<h5 class="card-title">{{favorite.name}}</h5>
+						<p class="card-text">{{favorite.description}}</p>
+					</div>
+					<div class="links d-flex justify-content-between align-items-center mt-4">
+						<a class="game-controller d-flex  align-items-center justify-content-start text-dark" href="{{favorite.link}}">
+							<ion-icon class="game-controller-outline h1" name="game-controller-outline"></ion-icon>
+							<p id="play" class="play h6 px-2">JOUER</p>
+						</a>
+						<a href="/games/show?id={{ favorite.id }}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewbox="0 0 16 16">
+								<path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+	{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+	<div id="carouselExampleIndicators" class="carousel slide mx-auto" data-bs-ride="carousel">
+		<div class="carousel-indicators">
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="carousel-button carousel cible active" aria-current="true" aria-label="Slide 1"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" class="carousel-button carousel cible" aria-label="Slide 2"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" class="carousel-button carousel cible" aria-label="Slide 3"></button>
+			<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" class="carousel-button carousel cible" aria-label="Slide 4"></button>
+		</div>
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<a href="/games/show?id={{games[4][0]['id']}}">
+					<img src="/assets/images/{{games[4][0]['image']}}" class="d-none d-xl-block w-100" alt="...">
+					<img src="/assets/images/{{games[4][0]['icon']}}" class="d-block d-xl-none w-100" alt="...">
+				</a>
+			</div>
+			{% for game in games[4] %}
+				{% if loop.index > 1 %}
+					<div class="carousel-item">
+						<a href="/games/show?id={{game.id}}">
+							<img src="/assets/images/{{game.image}}" class="d-none d-xl-block w-100" alt="...">
+							<img src="/assets/images/{{game.icon}}" class="d-block d-xl-none w-100" alt="...">
+						</a>
+					</div>
+				{% endif %}
+			{% endfor %}
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</div>
+	<div class="categorie">
+		<h2 class="home-title h4 px-3">Les mieux notés</h2>
+		<div class="hs px-3">
+			{% for game in games[0] %}
+				<a class="containercard position-relative" href="games/show?id={{ game.id }}">
+					<img class="card radius" src="/assets/images/{{ game.icon }}">
+					<div class="hover position-absolute d-none d-xl-flex flex-column justify-content-between">
+						<div class="heart d-flex justify-content-end">
+							{% if session.user.id %}
+							<object>
+								<a href="games/favorite?id={{ game.id }}" class="link-favorite">
+									<ion-icon name="heart-outline" style="zoom:1.5;"></ion-icon>
+								</a>
+							</object>
+							{% else %}
+							<div class="d-block"></div>
+							{% endif %}
+						</div>
+						<h2 class="hover-title mx-auto text-center">{{ game.name }}</h2>
+						<div class="bottom-icon d-flex justify-content-between">
+							{% if game.is_solo %}
+								<ion-icon name="person-outline" style="zoom:1.5;"></ion-icon>
+							{% else %}
+								<ion-icon name="people-outline" style="zoom:1.5;"></ion-icon>
+							{% endif %}
+							<p>{{game.average}}/5</p>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+			<a href="/games/index?sort=rate"><img class="d-none d-md-block m-auto" src="/assets/images/points.png" id="see_more_image"></a>
+		</div>
+		<h2 class="home-title px-3 h4">Les plus populaires</h2>
+		<div class="hs1 px-3">
+			{% for game in games[1] %}
+				<a class="containercard position-relative" href="games/show?id={{ game.id }}">
+					<img class="card1" src="/assets/images/{{ game.icon }}">
+					<div class="hover position-absolute d-none d-xl-flex flex-column justify-content-between">
+					<div class="heart d-flex justify-content-end">
+							{% if session.user.id %}
+							<object>
+								<a href="games/favorite?id={{ game.id }}" class="link-favorite">
+									<ion-icon name="heart-outline" style="zoom:1.5;"></ion-icon>
+								</a>
+							</object>
+							{% else %}
+							<div class="d-block"></div>
+							{% endif %}
+						</div>
+						<h2 class="hover-title mx-auto text-center">{{ game.name }}</h2>
+						<div class="bottom-icon d-flex justify-content-between">
+							{% if game.is_solo %}
+								<ion-icon name="person-outline" style="zoom:1.5;"></ion-icon>
+							{% else %}
+								<ion-icon name="people-outline" style="zoom:1.5;"></ion-icon>
+							{% endif %}
+							<p>{{game.average}}/5</p>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+			<a href="/games/index?sort=popularity"><img class="d-none d-md-block m-auto" src="/assets/images/points.png" class="see_more_image"></a>
+		</div>
+		<h2 class="home-title px-3 h4">Party Game</h2>
+		<div class="hs2 px-3">
+			{% for game in games[2] %}
+				<a class="containercard position-relative" href="games/show?id={{ game.id }}">
+					<img class="card2" src="/assets/images/{{ game.icon }}">
+					<div class="hover position-absolute d-none d-xl-flex flex-column justify-content-between">
+						<div class="heart d-flex justify-content-end">
+							{% if session.user.id %}
+							<object>
+								<a href="games/favorite?id={{ game.id }}" class="link-favorite">
+									<ion-icon name="heart-outline" style="zoom:1.5;"></ion-icon>
+								</a>
+							</object>
+							{% else %}
+							<div class="d-block"></div>
+							{% endif %}
+						</div>
+						<h2 class="hover-title mx-auto text-center">{{ game.name }}</h2>
+						<div class="bottom-icon d-flex justify-content-between">
+							{% if game.is_solo %}
+								<ion-icon name="person-outline" style="zoom:1.5;"></ion-icon>
+							{% else %}
+								<ion-icon name="people-outline" style="zoom:1.5;"></ion-icon>
+							{% endif %}
+							<p>{{game.average}}/5</p>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+		<h2 class="home-title px-3 h4">Top 10 pour les WC</h2>
+		<div class="hs3 px-3">
+			{% for game in games[3]%}
+				<a class="containercard position-relative" href="games/show?id={{ game.id }}">
+					<img class="card3" src="/assets/images/{{ game.icon }}">
+					<div class="hover position-absolute d-none d-xl-flex flex-column justify-content-between">
+						<div class="heart d-flex justify-content-end">
+							{% if session.user.id %}
+							<object>
+								<a href="games/favorite?id={{ game.id }}" class="link-favorite">
+									<ion-icon name="heart-outline" style="zoom:1.5;"></ion-icon>
+								</a>
+							</object>
+							{% else %}
+							<div class="d-block"></div>
+							{% endif %}
+						</div>
+						<h2 class="hover-title mx-auto text-center">{{ game.name }}</h2>
+						<div class="bottom-icon d-flex justify-content-between">
+							{% if game.is_solo %}
+								<ion-icon name="person-outline" style="zoom:1.5;"></ion-icon>
+							{% else %}
+								<ion-icon name="people-outline" style="zoom:1.5;"></ion-icon>
+							{% endif %}
+							<p>{{game.average}}/5</p>
+						</div>
+					</div>
+				</a>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock %}
+{% block javascript %}
+	<script src="/assets/script/homepage.js"></script>
+{% endblock %}

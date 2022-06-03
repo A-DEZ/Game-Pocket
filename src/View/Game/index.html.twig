@@ -1,0 +1,172 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+	ALL GAMES
+{% endblock %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/gameall.css">
+{% endblock %}
+
+{% block content %}
+	<main
+		class="gameAll">
+
+		<!-- -POPULAIRE - MEILLEURE NOTE - RECENT- -->
+		<section class="containerGameAll">
+			<div class="link popular">
+				<a class="popular" href="?sort=popularity">
+					<ion-icon class="icon" name="thumbs-up-outline"></ion-icon>
+					<p id="popular" class="title popular">
+						POPULAIRE
+					</p>
+				</a>
+			</div>
+
+			<div class="link bestRate">
+				<a class="bestRate" href="?sort=rate">
+					<ion-icon class="icon" name="trophy-outline"></ion-icon>
+					<p id="bestRate" class="title bestRate">
+						MEILLEURES NOTES
+					</p>
+				</a>
+			</div>
+
+			<div class="link newer">
+				<a class="newer" href="?sort=date">
+					<ion-icon class="icon" name="flame-outline"></ion-icon>
+					<p id="newer" class="title newer">
+						PLUS RECENTS
+					</p>
+				</a>
+			</div>
+		</section>
+
+		<div class="d-xl-none d-flex justify-content-center">
+			<button type="button" class="btn btn-primary btn-sm w-50" data-bs-toggle="modal" data-bs-target="#myModal">Filtres</button>
+			<div class="modal" id="myModal">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h4 class="modal-title">Filtres</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+
+						<div class="modal-body">
+							<form action="" method="post" class="d-flex flex-column align-content_center bd-highlight mb-3">
+								<div class="p-2 bd-highlight">
+									<label for="gameMode" class="form-label mt-2">Mode</label>
+									<select name="gameMode" class="form-select">
+										<option value="">-</option>
+										<option value="TRUE">En ligne</option>
+										<option value="FALSE">Hors ligne</option>
+									</select>
+								</div>
+								<div class="p-2 bd-highlight">
+									<label for="gameGenre" class="form-label mt-2">Genre</label>
+									<select name="gameGenre" class="form-select">
+										<option value="">-</option>
+										<option value="TRUE">Solo</option>
+										<option value="FALSE">Multijoueur</option>
+									</select>
+								</div>
+								<div class="p-2 bd-highlight">
+									<label for="gameDuration" class="form-label mt-2">Durée</label>
+									<select name="gameDuration" class="form-select">
+										<option value="">-</option>
+										<option value="Courte">Courte</option>
+										<option value="Moyenne">Moyenne</option>
+										<option value="Longue">Longue</option>
+									</select>
+								</div>
+								<div class="p-2 bd-highlight align-self-end">
+									<button type="submit" class="btn btn-primary mt-2" name="submit">Appliquer</button>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<form action="" method="post" class="d-none d-xl-flex flex-row justify-content-center bd-highlight mb-3">
+				<div class="p-2 bd-highlight">
+					<label for="gameMode" class="form-label mt-2">Mode</label>
+					<select name="gameMode" id="gameMode" class="form-select">
+						<option value="">-</option>
+						<option value="TRUE">En ligne</option>
+						<option value="FALSE">Hors ligne</option>
+					</select>
+				</div>
+				<div class="p-2 bd-highlight">
+					<label for="gameGenre" class="form-label mt-2">Genre</label>
+					<select name="gameGenre" id="gameGenre" class="form-select">
+						<option value="">-</option>
+						<option value="TRUE">Solo</option>
+						<option value="FALSE">Multijoueur</option>
+					</select>
+				</div>
+				<div class="p-2 bd-highlight">
+					<label for="gameDuration" class="form-label mt-2">Durée</label>
+					<select name="gameDuration" id="gameDuration" class="form-select">
+						<option value="">-</option>
+						<option value="Courte">Courte</option>
+						<option value="Moyenne">Moyenne</option>
+						<option value="Longue">Longue</option>
+					</select>
+				</div>
+				<div class="p-2 bd-highlight align-self-end">
+					<button type="submit" class="btn btn-primary mt-2" name="submit">Envoyer</button>
+				</div>
+			</form>
+		</div>
+
+		<section class="containerCardsBlock">
+			{% for game in gameAll %}
+				<div class="containerCard">
+					<div class="card">
+						<div class="containerImg">
+							<img class="game-img" src="/assets/images/{{game.image}}">
+							<p class="rateAverage">
+								{{game.average}}/5
+							</p>
+						</div>
+						<!-- fin du container img -->
+						<div class="containerCardBody">
+							<h4 class="game-title">
+								{{game.name}}
+							</h4>
+							<p class="description">
+								{{game.description}}
+							</p>
+							<div class="containerIcon">
+								<div class="read-more">
+									<a class="iconGroup stretched-link" href="/games/show?id={{game.id}}">
+										<p class="textIcon infoText">
+											INFO
+										</p>
+										<ion-icon style="zoom:2.0;" class="bookIcon" name="book-outline"></ion-icon>
+									</a>
+								</div>
+								<div class="game-controller">
+									<a class="iconGroup play" href="{{game.link}}">
+										<p class="textIcon playText">
+											JOUER
+										</p>
+										<ion-icon style="zoom:2.0;" class="gameIcon" name="game-controller-outline"></ion-icon>
+									</a>
+								</div>
+							</div>
+							<!-- fin du containerCardBody -->
+						</div>
+					</div>
+
+				</div>
+			{% endfor %}
+		</section>
+
+	</main>
+{% endblock %}

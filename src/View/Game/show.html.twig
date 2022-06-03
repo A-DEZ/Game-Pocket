@@ -1,0 +1,121 @@
+{% extends 'layout.html.twig' %}
+{% block content %}
+	<div class="imagecontainer">
+		<img class="game img-fluid" alt="image1" src="/assets/images/{{game[0]['image']}}">
+	</div>
+	<div class="return-logo">
+		<a href="/">
+			<ion-icon style="zoom:2.5;" name="return-down-back-outline" class="retun-icon"></ion-icon>
+		</a>
+	</div>
+	<section class="game-description mt-4">
+		<div class="d-flex justify-content-between">
+			<div class="left-side">
+				<h2 class="title text-dark text-uppercase h6">{{game[0]['name']}}</h2>
+				{% if session.user.id %}
+				<a href="/games/favorite?id={{game[0]['id']}}">
+					<ion-icon name="heart-outline" style="zoom:1.5;"></ion-icon>
+				</a>
+				{% endif %}
+			</div>
+			<a class="rating-star-text">
+				<form action="rate?id={{game[0]['id']}}" method="post" class="rating-star d-flex justify-content-between text-dark h5">
+					<fieldset class="rate">
+						<input type="submit" id="rating10" name="rating" value="5"/><label for="rating10" title="5 stars"></label>
+						<input type="submit" id="rating9" name="rating" value="4.5"/><label class="half" for="rating9" title="4 1/2 stars"></label>
+						<input type="submit" id="rating8" name="rating" value="4"/><label for="rating8" title="4 stars"></label>
+						<input type="submit" id="rating7" name="rating" value="3.5"/><label class="half" for="rating7" title="3 1/2 stars"></label>
+						<input type="submit" id="rating6" name="rating" value="3"/><label for="rating6" title="3 stars"></label>
+						<input type="submit" id="rating5" name="rating" value="2.5"/><label class="half" for="rating5" title="2 1/2 stars"></label>
+						<input type="submit" id="rating4" name="rating" value="2"/><label for="rating4" title="2 stars"></label>
+						<input type="submit" id="rating3" name="rating" value="1.5"/><label class="half" for="rating3" title="1 1/2 stars"></label>
+						<input type="submit" id="rating2" name="rating" value="1"/><label for="rating2" title="1 star"></label>
+						<input type="submit" id="rating1" name="rating" value="0.5"/><label class="half" for="rating1" title="1/2 star"></label>
+					</fieldset>
+				</form>
+				<div class="rating-star text-end text-dark">
+					<p class="rating">{{game[0]['average']}}/5</p>
+				</div>
+			</a>
+		</div>
+		<div class="description mb-4">
+			<p class="game-commentary">{{game[0]['description']}}</p>
+		</div>
+		<div class="d-flex justify-content-between">
+			<div class="game-controller">
+				<a class="game-controller d-flex  align-items-center justify-content-start text-dark" href="popularity?url={{game[0]['link']}}&id={{game[0]['id']}}">
+					<ion-icon style="zoom:1.5;" class="game-controller-outline h1" name="game-controller-outline"></ion-icon>
+					<p id="play" class="play h6 px-2">JOUER</p>
+				</a>
+			</div>
+			<div class="play-demo">
+				<a class="play d-flex justify-content-end align-items-center text-dark" href="{{game[0]['video']}}">
+					<p id="demo" class="demo h6 px-2">DEMO</p>
+					<ion-icon style="zoom:1.5;" class="play-outline h1" name="play-outline"></ion-icon>
+				</a>
+			</div>
+		</div>
+	</section>
+	{% if session.user.id %}
+	<section class="form-add-comment">
+		<form action="comment?id={{game[0]['id']}}" class="add-comment" method="post">
+			<textarea name="message" rows="2" class="question comment-textarea" id="msg" required autocomplete="off"  maxlength="255"></textarea>
+			<label for="msg" class="comment-label d-flex justify-content-center">
+				<span class="comment-span add'">Laissez un commentaire</span>
+			</label>
+			<input type="submit" value="Envoyez" class="comment-input submit"/>
+		</form>
+	</section>
+	{% else %}
+	<section class="form-add-comment">
+		<a href="/user/login"><p class="font-weight-bold text-center">Se connecter pour laisser un commentaire</p></a>
+	</section>
+	{% endif %}
+	<section class="written-commentary">
+		<section id="visible-comments" class="">
+			{% for comment in game[1] %}
+				{% if loop.index <= 5 and game[1][0]['content'] is not null %}
+					<div class="d-flex flex-column flex-xl-row align-items-xl-center  mb-3 mb-xl-4">
+						<div class="d-flex justify-content-between align-items-center">
+							<div class="d-flex flex-xl-column align-items-center">
+								<img class="profile-pic mb-2" alt="image1" src="/assets/images/user/{{comment.avatar}}">
+								<h4 class="h6 small mx-3">{{comment.username}}</h3>
+								<p class="d-none d-xl-block">{{comment.created_at}}</p>
+							</div>
+							<p class="h6 small d-xl-none">{{comment.created_at}}</p>
+						</div>
+						<p class="game-commentary mx-xl-4 comment">{{comment.content}}</p>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</section>
+		<section id="hidden-comments" class="d-none">
+			{% for comment in game[1] %}
+				<div class="d-flex flex-column flex-xl-row align-items-xl-center  mb-3 mb-xl-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="d-flex flex-xl-column align-items-center">
+							<img class="profile-pic mb-2" alt="image1" src="/assets/images/user/{{comment.avatar}}">
+							<h4 class="h6 small mx-3">{{comment.username}}</h3>
+							<p class="d-none d-xl-block">{{comment.created_at}}</p>
+						</div>
+						<p class="h6 small d-xl-none">{{comment.created_at}}</p>
+					</div>
+					<p class="game-commentary mx-xl-4 comment">{{comment.content}}</p>
+				</div>
+			{% endfor %}
+		</section>
+		{% if game[1]|length > 5 %}
+			<div class="text-center mb-4">
+				<button id="seeMore" class="btn btn-warning btn-lg">Voir plus...</button>
+			</div>
+			<div class="text-center mb-4">
+				<button id="seeLess" class="btn btn-warning btn-lg d-none">Réduire...</button>
+			</div>
+		{% endif %}
+	</section>
+	{# fin du container #}
+{% endblock %}
+
+{% block javascript %}
+	<script src="/assets/script/game.js"></script>
+{% endblock %}

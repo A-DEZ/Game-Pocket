@@ -1,0 +1,45 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/register.css">
+{% endblock %}
+{% block content %}
+<main class="registerbody">
+<div style="margin-top: 80px;">
+<form class="d-flex flex-column align-items-center" action ="" method="post" enctype="multipart/form-data">
+    <h2 class="my-5">Inscrivez-vous</h2>
+    <div class="d-flex flex-column flex-row w-100 mb-3">
+        <label for="username">Pseudo</label>
+        <input type="text" pattern="^[a-zA-Z-' ]*$" name="username" id="username" rows="1" required class="w-100"></input>
+    </div>
+    <div class="d-flex flex-column flex-row w-100 mb-3">
+        <label for="name">Votre nom</label>
+        <input type="text" pattern="^[a-zA-Z-' ]*$" name="name" id="name" rows="1" required class="w-100"></input>
+    </div>
+    <div class="d-flex flex-column flex-row w-100 mb-3">
+        <label for="mail">Mail</label>
+        <input type="email" name="mail" id="mail" rows="1" required class="w-100"></input>
+    </div>
+    <div class="d-flex flex-column flex-row w-100 mb-3">
+        <label for="password">Votre mot de passe</label>
+        <input type="password" name="password" id="password" rows="1" required class="w-100"></input>
+    </div>
+    <div class="d-flex justify-content-evenly mb-3">
+        <label for="role">Votre rôle ?</label>
+        <select name="role" required id="role">
+            <option value="Gamer">Gamer</option>
+            <option value="Admin">Admin</option>
+            <option value="Dev">Dev</option>
+        </select>
+    </div>
+    <div class="d-flex flex-column flex-row w-100 justify-content-center mb-3">
+        <label for="avatar">Avatar</label>
+        <input type="file" name="avatar" id="avatar" class="w-100">
+    </div>
+        <button type="submit" class="btn btn-primary mt-2" id="submit" class="accountButton">Créer un compte</button>
+    </form> 
+    {% for error in errors %}
+    <span>{{ error }}</span>
+    {% endfor %}
+    </div>
+</main>
+{% endblock %}

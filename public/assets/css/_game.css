@@ -1,0 +1,350 @@
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+p.font-weight-bold.text-center{
+ font-weight: 500;
+ border-bottom: 2px solid #ffc803;
+ padding-bottom: 1rem;
+ margin-top: 1.5rem;
+}
+
+p.h6.small{
+  font-size: 0.70rem;
+}
+
+p.game-commentary{
+  overflow-wrap: break-word;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.game.img-fluid {
+  margin-top: 54px;
+  width: 100%;
+  height: 50vw;
+  max-height: 40vh;
+  object-fit: cover;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.return-logo {
+  margin-left: 6vw;
+  margin-top: 6vw;
+}
+
+.title.text-dark {
+  font-weight: bold;
+  max-width: 50vw;
+  overflow-wrap: break-word;
+  margin-bottom: 0.75rem;
+}
+
+.rating {
+  font-weight: bold;
+}
+
+.game-description.mt-4 {
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+
+.profile-pic {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.written-commentary {
+  margin-left: 8vw;
+  margin-right: 8vw;
+}
+
+.add-commentary {
+  margin-left: 8vw;
+  margin-right: 8vw;
+  height: 3rem;
+  box-shadow: 1px 4px 4px #c5c5c5;
+}
+
+fieldset {
+  text-align: center;
+  color: #333;
+}
+
+.rate {
+  display: inline-block;
+  border: 0;
+}
+
+.rate > input {
+  display: none;
+}
+
+.rate > label {
+  float: right;
+}
+
+.rate > label:before {
+  display: inline-block;
+  font-size: 1.2rem;
+  padding: 0.3rem 0.2rem;
+  margin: 0;
+  cursor: pointer;
+  font-family: FontAwesome;
+  content: "\f005 ";
+}
+
+.rate .half:before {
+  content: "\f089 ";
+  position: absolute;
+  padding-right: 0;
+}
+
+.rate > input:checked ~ label,
+.rate > label:hover,
+.rate > label:hover ~ label {
+  color: #ffc803;
+}
+input:checked + label:hover,
+input:checked ~ label:hover,
+input:checked ~ label:hover ~ label,
+label:hover ~ input:checked ~ label {
+  color: grey;
+}
+
+.add-comment{
+  margin-top: 35px;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.comment-input,
+.comment-span,
+.comment-label,
+.question.comment-textarea {
+
+  display: block;
+  margin: 10px;
+  padding: 5px;
+  border: none;
+}
+
+.question.comment-textarea:focus,
+.comment-input:focus {
+  outline: 0;
+}
+/* Question */
+
+.comment-input.question,
+.question.comment-textarea.question {
+  font-size: 1rem;
+  font-weight: 300;
+  border-radius: 2px;
+  margin: 0;
+  border: none;
+  width: 80%;
+  background: rgba(0, 0, 0, 0);
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+}
+/* Underline and Placeholder */
+
+.comment-input.question + .comment-label,
+.question.comment-textarea.question + .comment-label {
+  display: block;
+  position: relative;
+  margin: 0;
+  width: 100%;
+  border-top: 2px solid #ffc803;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+  height: 0px;
+}
+
+.comment-input.question:focus + .comment-label,
+.question.comment-textarea.question:focus + .comment-label {
+  width: 100%;
+}
+
+.comment-input.question:focus,
+.comment-input.question:valid {
+  padding-top: 35px;
+}
+
+.question.comment-textarea.question:valid,
+.question.comment-textarea.question:focus {
+  margin-top: 35px;
+}
+
+.comment-input.question:focus + .comment-label > .comment-span,
+.comment-input.question:valid + .comment-label > .comment-span {
+  top: -100px;
+  font-size: 22px;
+  color: black;
+}
+
+.question.comment-textarea.question:focus + .comment-label > .comment-span,
+.question.comment-textarea.question:valid + .comment-label > .comment-span {
+  top: -100px;
+  font-size: 22px;
+  color: rgb(17, 17, 17);
+}
+
+.comment-input.question:valid + .comment-label,
+.question.comment-textarea.question:valid + .comment-label {
+  border-color: black;
+}
+
+.comment-input.question:invalid,
+.question.comment-textarea.question:invalid {
+  box-shadow: none;
+}
+
+.comment-input.question + .comment-label > .comment-span,
+.question.comment-textarea.question + .comment-label > .comment-span {
+  font-weight: 300;
+  margin: 0;
+  position: absolute;
+  color: rgb(80, 80, 80);
+  font-size: 1.5rem;
+  top: -66px;
+  z-index: -1;
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+.comment-input{
+  background-color: #ffc803;
+}
+
+
+.comment-input[type="submit"] {
+  -webkit-transition: opacity 0.2s ease, background 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  display: block;
+  opacity: 0;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.comment-input[type="submit"]:hover {
+  background: #EEE;
+}
+
+.comment-input[type="submit"]:active {
+  background: #999;
+}
+
+.comment-input.question:valid ~ .comment-input[type="submit"], .question.comment-textarea.question:valid ~ .comment-input[type="submit"] {
+  -webkit-animation: appear 1s forwards;
+  animation: appear 1s forwards;
+}
+
+.comment-input.question:invalid ~ .comment-input[type="submit"], .question.comment-textarea.question:invalid ~ .comment-input[type="submit"] {
+  display: none;
+}
+
+@-webkit-keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+.form-add-comment{
+  width: 84vw;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 14px;
+}
+
+.comment-input.submit{
+  margin-right: 0;
+  margin-left: auto;
+}
+
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+
+  .form-add-comment{
+    width: 70vw;
+  }
+  .written-commentary {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+  .game-description.mt-4 {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+
+  .return-logo {
+    margin-left: 13vw;
+    margin-top: 6rem;
+  }
+
+  .imagecontainer {
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50vw;
+    max-height: 40vh;
+    object-fit: cover;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  h4.h6.small{
+    font-size: 1rem;
+  }
+  
+  .written-commentary {
+    margin-left: 24vw;
+    margin-right: 24vw;
+  }
+  .game-description.mt-4 {
+    margin-left: 24vw;
+    margin-right: 24vw;
+  }
+  .add-commentary {
+    margin-left: 24vw;
+    margin-right: 24vw;
+  }
+
+  .return-logo {
+    margin-left: 22vw;
+    margin-top: 6rem;
+  }
+
+  .imagecontainer {
+    width: 54vw;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: contain;
+    object-fit: cover;
+    height: 45vh;
+  }
+
+  .game.img-fluid {
+    max-height: 45vh;
+  }
+
+  .form-add-comment{
+    width: 54vw;
+  }
+
+  p.h6.small.d-xl-none{
+    font-size: 0.25em;
+  }
+
+}

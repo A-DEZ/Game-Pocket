@@ -1,0 +1,80 @@
+<div style="height: 54px" class="fixed-top bg-navbar justify-content-between align-items-center d-flex text-dark font-weight-bold">
+	{% if session.user.id %}
+		<div class="d-flex align-items-center">
+			<img src="/assets/images/user/{{session.user.avatar}}" class="avatar-mobile"/>
+			<a class="nav-link text-dark font-weight-bold" href="/user/logout">Logout</a>
+		</div>
+	{% else %}
+		<a class="nav-link text-dark font-weight-bold" href="/user/login">Login</a>
+	{% endif %}
+	<ul class="navbar-nav d-none d-xl-flex flex-row justify-content-center">
+		<li class="nav-item active px-3">
+			<a class="nav-link text-dark font-weight-bold" href="/">Home</a>
+		</li>
+		<li class="nav-item px-3">
+			<a class="nav-link text-dark font-weight-bold " href="/games/index">All Games</a>
+		</li>
+		{% if session.user.role == "Gamer" %}
+			<li class="nav-item px-3">
+				<a class="nav-link text-dark font-weight-bold " href="/user/favorite">Mes Favoris</a>
+			</li>
+		{% endif %}
+		{% if session.user.role == "Dev" %}
+			<li class="nav-item px-3">
+				<a class="nav-link text-dark font-weight-bold " href="/games/add">Espace Dev</a>
+			</li>
+		{% endif %}
+		<li class="nav-item px-3">
+			<a class="nav-link text-dark font-weight-bold " href="/forms/contact">Contact</a>
+		</li>
+		<li class="nav-item px-3">
+			<form class="form-inline d-flex" action="/games/search" method="get">
+				<input class="form-control" type="search" placeholder="Search" aria-label="Search" name="query" id="search">
+				<button class="btn btn-outline-success border-0" type="submit" value="submit">
+					<img class="loupe" src="/assets/images/search.svg"/></button>
+			</form>
+		</li>
+	</ul>
+	<a href="/">
+		<img src="/assets/images/logo.png" class="logo-mobile d-block" id="logo-mobile">
+	</a>
+</div>
+<div class="fixed-bottom d-xl-none">
+	<div class="collapse" id="navbarToggleExternalContent">
+		<div class="p-5 font-weight-bold text-center d-flex justify-content-around">
+			<a class="nous-contacter" href="/forms/contact" id="contact">Nous<br/>Contacter
+			</a>
+			{% if session.user.role == "Dev" %}
+			<a class="espace-dev" href="/games/add">Espace<br/>Dev
+				</a>
+				<a href="/games/index" id="joystick">All<br/>Games
+				</a>
+				<a class="home d-none" href="/user/favorite">Mes<br/>Favoris</a>
+			{% else %}
+				<a href="/games/index" class="d-block" id="joystick">All<br/>Games
+				</a>
+			{% endif %}
+			{% if session.user.role == "Gamer" %}
+			<a class="home" href="/user/favorite">Mes<br/>Favoris</a>
+			{% endif %}
+		</div>
+	</div>
+	<nav class="navbar navbar-dark bg-navbar fixed-bottom d-xl-none">
+		<div class="container-fluid">
+			<ion-icon name="close-circle" style="zoom:2;" class="d-none" id="closeSearch"></ion-icon>
+			<img src="/assets/images/search.svg" class="loupe" id="searchToggler"/>
+			<a href="/">
+				<img src="/assets/images/GamePocketTitle.png" class="logo" id="logo">
+			</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation" id="listMobile">
+				<img src="/assets/images/list.svg" class="list"/>
+			</button>
+			<form class="mobile form-inline d-flex align-items-center d-none" action="/games/search" method="get" id="mobileSearchBar">
+				<input class="mobile form-control" type="search" placeholder="Search" aria-label="Search" name="query">
+				<button class="btn btn-outline-success border-0 d-flex align-items-center" type="submit" value="submit">
+					<ion-icon name="send" style="zoom:1.5;" class="send-search"></ion-icon>
+				</button>
+			</form>
+		</div>
+	</nav>
+</div>

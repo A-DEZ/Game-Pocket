@@ -1,0 +1,507 @@
+/* applying layout model to all elements */
+
+.gameAll,
+.gameAll:before,
+.gameAll:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.gameAll {
+  margin-top: 60px;
+  margin-left: 10px;
+  margin-right: 10px;
+  justify-content: center;
+}
+
+/* --------------------SECTION POPULAIRE - MEILLEURE NOTE - RECENT--------------------- */
+section.containerGameAll {
+  display: flex;
+  justify-content: center;
+}
+
+div.link {
+  margin-left: 0;
+  margin-right: 0;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+}
+
+div.link.popular {
+  display: flex;
+  justify-content: flex-end;
+}
+
+div.link.newer {
+  display: flex;
+  justify-content: flex-start;
+}
+
+a.popular,
+a.bestRate,
+a.newer {
+  margin-left: 5px;
+  margin-right: 5px;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icon {
+  font-size: 1.5rem;
+  font-weight: bold;
+  zoom: 1rem;
+}
+
+p.title {
+  font-size: 0.5rem;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+/* --------------------FILTRES GENRE MODE DUREE--------------------- */
+
+.labelDeroulanteInline {
+  height: 10%;
+  margin-top: 10px;
+}
+
+/* Shows the responsive button FILTRE*/
+.responsive-button {
+  margin: auto;
+  padding: 5px;
+  width: 40%;
+  max-width: 180px;
+  color: #333;
+  background: white;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid #ccc;
+  border-radius: 0.2rem;
+  display: block;
+  text-align: center;
+  text-size-adjust: auto;
+}
+
+/* HIDE the menu, les listes*/
+.deroulant {
+  display: none;
+}
+
+button.submit {
+  display: none;
+}
+
+/* -----------CARD---------- */
+
+.containerCardsBlock {
+  padding: 0px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 0px;
+}
+
+.card {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 100%;
+  height: 18%;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  text-align: center;
+  transition: all 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+.card:nth-child(2) {
+  margin: 0 50px;
+}
+
+.card:hover {
+  top: -15px;
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* ------part Pic + rating -------- */
+.containerImg {
+  padding: 5px;
+}
+
+.game-img {
+  object-fit: cover;
+  width: 100%;
+  border-radius: 0.5rem;
+  align-self: flex-start;
+}
+
+.rateAverage {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* ------ part title + quick description + icons -------- */
+
+.containerCardBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.game-title {
+  margin: 0px;
+  margin-left: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+}
+
+.description {
+  margin: 1rem;
+  text-align: left;
+  font-size: 0.64rem;
+}
+
+.containerIcon {
+  padding: 1px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.read-more,
+.game-controller {
+  display: flex;
+}
+
+.iconGroup {
+  padding: 5px;
+  align-items: center;
+  justify-content: flex-start;
+  color: black;
+  z-index: 1;
+}
+
+.iconGroupe.play{
+  z-index: 4;
+}
+
+.textIcon {
+  height: 1rem;
+  margin: 1px;
+  font-weight: bold;
+  display: flex;
+}
+
+/* -------- MEDIA QUERY------------ */
+@media screen and (min-width: 768px) {
+  main.gameAll {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  /* -------------SECTION POPULAIRE BEST RATE RECENT  -------------- */
+
+  section.containerGameAll {
+    width: 100%;
+  }
+
+  div.link.popular {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  div.link.newer {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  a.popular,
+  a.bestRate,
+  a.newer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .icon {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  p.title {
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+
+  /* -------------------- GENRE MODE DUREE--------------------- */
+
+  /* hides the responsive button. */
+  .responsive-button {
+    display: none;
+  }
+
+  /* Shows the GENRE MODE DUREE*/
+  .menu div select {
+    display: block;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .menu .lists .deroulant {
+    margin: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0.2rem;
+    font-size: 1rem;
+  }
+
+  .lists {
+    display: flex;
+    justify-content: center;
+  }
+
+  .lists > select option:hover .deroulant {
+    display: block;
+  }
+
+  .deroulant {
+    border-style: none;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 40%;
+    background-color: white;
+    z-index: 500;
+    float: none;
+  }
+
+  .checkmark {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .submit {
+    border-style: none;
+    background-color: white;
+  }
+
+  /* Permanently hides the checkbox that helps us as a menu toogle element */
+  input[id="responsive-button"] {
+    display: none;
+  }
+
+  /* --------- CARD -----------. */
+  .containerCardsBlock {
+    padding: 0px;
+  }
+
+  .card {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  /* ------part Pic + rating -------- */
+
+  .containerImg {
+    width: 40%;
+  }
+
+  .game-img {
+    height: 200px;
+    width: 100%;
+    border-radius: 0.5rem;
+    align-self: flex-start;
+  }
+
+  .rateAverage {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin: 0.7rem;
+    margin-bottom: 0;
+  }
+
+  /* ------Right part title + quick description + icons -------- */
+
+  .containerCardBody {
+    width: 60%;
+  }
+
+  .game-title {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.8rem;
+  }
+}
+
+/* -------- MEDIA QUERY------------ */
+@media screen and (min-width: 1200px) {
+  main.gameAll {
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+  /* -------------SECTION POPULAIRE BEST RATE RECENT  -------------- */
+
+  section.containerGameAll {
+    width: 100%;
+  }
+
+  div.link.popular {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  div.link.newer {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  a.popular,
+  a.bestRate,
+  a.newer {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .icon {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  p.title {
+    font-size: 1rem;
+    font-weight: bold;
+    padding-top: 10px;
+  }
+
+  /* -------------------- GENRE MODE DUREE--------------------- */
+
+  /* hides the responsive button. */
+  .responsive-button {
+    display: none;
+  }
+
+  /* Shows the GENRE MODE DUREE*/
+  .menu div select {
+    display: block;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .menu .lists .deroulant {
+    margin: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0.2rem;
+  }
+
+  .lists {
+    display: flex;
+    justify-content: center;
+  }
+
+  .lists > select option:hover .deroulant {
+    display: block;
+  }
+
+  .deroulant {
+    border-style: none;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 40%;
+    background-color: white;
+    z-index: 500;
+    float: none;
+  }
+
+  .checkmark {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .submit {
+    border-style: none;
+    background-color: white;
+  }
+
+  /* Permanently hides the checkbox that helps us as a menu toogle element */
+  label[id="responsive-button"] {
+    display: none;
+  }
+
+  /* --------- CARD -----------. */
+  .containerCardsBlock {
+    padding: 0px;
+  }
+
+  .containerCardBody {
+    height: 100%;
+    width: 60%;
+  }
+
+  .containerCard {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .card {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 25rem;
+  }
+
+  /* ------part Pic + rating -------- */
+
+  .containerImg {
+    width: 40%;
+  }
+
+  .game-img {
+    height: 300px;
+    width: 100%;
+    border-radius: 0.5rem;
+    align-self: flex-start;
+  }
+
+  .rateAverage {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem;
+    margin-bottom: 0;
+  }
+
+  /* ------Right part title + quick description + icons -------- */
+
+  .game-title {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1.5rem;
+  }
+}

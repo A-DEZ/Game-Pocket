@@ -1,0 +1,163 @@
+{% extends 'layout.html.twig' %}
+
+{% block title %}
+    Formulaire ajoutez un jeu
+                    
+            
+        
+    
+{% endblock %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="/assets/css/form.css">
+    {% endblock %}
+
+    {% block content %}
+        {% if errors is not empty %}
+            <script>
+                let error = {{ errors|json_encode|raw }}
+                alert(error.join('\n'));
+            </script>
+        {% endif %}
+        <main class="container">
+            <form class="formcontainer" action="" method="post" enctype="multipart/form-data">
+                <h1 class="Title mb-3">
+                    Ajoutez un Jeu
+                                                                            
+                                                        
+                                    
+                </h1>
+                <div>
+                    <label for="gameName" class="form-label">
+                        Nom du jeu
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <input id="gameName" name="gameName" type="text" class="champsSpace form-control shadow-sm" placeholder="Game Pocket Factory" pattern="^[a-zA-Z-9-']*$" rows="1" required></input>
+                </div>
+                <div>
+                    <label for="dateGame" class="form-label mt-2">
+                        Date de sortie
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <input id="dateGame" name="dateGame" type="date" class="champsSpace form-control shadow-sm" placeholder="URL:" rows="1" required></input>
+                </div>
+                <div>
+                    <label for="linkGame" class="form-label mt-2">
+                        Lien du jeu
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <input id="linkGame" name="linkGame" type="text" class="champsSpace form-control shadow-sm" rows="1" required></input>
+                </div>
+                <div>
+                    <label for="gameOnline" class="form-label mt-2">
+                        Online?
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <select id="gameOnline" name="gameOnline" class="champsSelect form-select shadow-sm" required>
+                        <option value="TRUE">
+                            Oui
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                        <option value="FALSE">
+                            Non
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="gameSolo" class="form-label mt-2 ">
+                        Multi?
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <select id="gameSolo" name="gameSolo" class="champsSelect form-select shadow-sm" required>
+                        <option value="TRUE">
+                            Oui
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                        <option value="FALSE">
+                            Non
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="lastingGame" class="form-label mt-2">
+                        Durée?
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <select id="lastingGame" name="lastingGame" class="champsSelect form-select shadow-sm" required>
+                        <option value="Courte">
+                            Courte
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                        <option value="Moyenne">
+                            Moyenne
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                        <option value="Longue">
+                            Longue
+                                                                                                            
+                                                                                
+                                                    
+                        </option>
+                    </select>
+                </div>
+                <div>
+                    <label for="descriptionGame" class="form-label mt-2">
+                        Description :
+                                                                                            
+                                                                    
+                                            
+                    </label>
+                    <textarea id="descriptionGame" name="descriptionGame" class="form-control shadow-sm" placeholder="Un super jeu dans ta pocket" rows="5" required></textarea>
+                </div>
+                    <div class="file-field">
+                        <label for="iconGame" class="form-label mt-2">
+                            Icône du jeu (carré)                        
+                        </label>
+                        <input id="iconGame" name="iconGame" type="file" class="champsSpace form-control shadow-sm">
+                    </div>
+                    
+                    <div class="file-field">
+                        <label for="imageGame" class="form-label mt-2">
+                            Image du jeu (paysage)                        
+                        </label>
+                        <input id="imageGame" name="imageGame" type="file" class="champsSpace form-control shadow-sm">
+                    </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary mt-2 shadow-sm" name="submit" id="envoyer">
+                                Envoyer
+                                                                                                                            
+                                                                                            
+                                                            
+                            </button>
+                        </div>
+                    </form>
+                </main>
+            {% endblock %}
+            

@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/search.css">
+{% endblock %}
+{% block content %}
+<section class="user-favorite">
+	<h2 class="favorite px-3 h4 mt-70">Résultats de la recherche</h2>
+	{% if search is empty %}
+		<img src="https://i.imgflip.com/5ujs2h.jpg" title="made at imgflip.com" class="img-nosearch d-block"/>
+	{% endif %}
+	<section class="favorite-section d-flex flex-wrap justify-content-center">
+		{% for game in search %}
+			<div class="card d-block mx-3 position-relative d-flex flex-column justify-content-between" style="width: 18rem;">
+				<img class="card-img-top mt-4" src="/assets/images/{{game.image}}" alt="Card image cap">
+				<div class="card-body d-flex flex-column justify-content-between">
+					<div class="cardtext">
+						<h5 class="card-title">{{game.name}}</h5>
+						<p class="card-text">{{game.description}}</p>
+					</div>
+					<div class="links d-flex justify-content-between align-items-center mt-4">
+						<a class="game-controller d-flex  align-items-center justify-content-start text-dark" href="{{game.link}}">
+							<ion-icon class="game-controller-outline h1" name="game-controller-outline"></ion-icon>
+							<p id="play" class="play h6 px-2">JOUER</p>
+						</a>
+						<a href="/games/show?id={{ game.id }}">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewbox="0 0 16 16">
+								<path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+							</svg>
+						</a>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+</section>
+{% endblock %}
